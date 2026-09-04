@@ -1,0 +1,76 @@
+@import "leaflet/dist/leaflet.css";
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.dark-map-tiles {
+  filter: brightness(0.9) contrast(0.9) sepia(0.1) hue-rotate(-10deg);
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+  body {
+    @apply text-text-main font-sans;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+    background-color: #090C10; /* Very dark editorial slate */
+    min-height: 100vh;
+  }
+  
+  /* Typography refinements */
+  .font-mono {
+    @apply text-text-muted;
+    letter-spacing: 0.05em;
+  }
+}
+
+@layer utilities {
+  /* Subtle depth for the background */
+  .bg-ink {
+    background-color: #090C10 !important;
+    background-image: radial-gradient(circle at 50% 0%, rgba(20, 30, 45, 0.4) 0%, transparent 70%) !important;
+    background-attachment: fixed !important;
+  }
+}
+
+@layer components {
+  /* Cards and panels - Extremely subtle glassmorphism */
+  .bg-surface {
+    border-radius: 16px !important;
+    background: rgba(18, 22, 31, 0.65) !important;
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 255, 255, 0.05) !important;
+    box-shadow: 0 12px 40px -12px rgba(0, 0, 0, 0.4) !important;
+    transition: border-color 300ms ease, box-shadow 300ms ease;
+  }
+  .bg-surface:hover {
+    border-color: rgba(255, 255, 255, 0.09) !important;
+    box-shadow: 0 16px 50px -12px rgba(0, 0, 0, 0.5) !important;
+  }
+
+  /* Primary Button - Soft understated glow */
+  button.bg-primary, a.bg-primary, .bg-primary {
+    background: #4F46E5 !important;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2), inset 0 1px 0 rgba(255,255,255,0.1) !important;
+    border: 1px solid rgba(0,0,0,0.3) !important;
+    text-shadow: 0 1px 2px rgba(0,0,0,0.2);
+    transition: all 200ms cubic-bezier(0.4, 0, 0.2, 1);
+  }
+  button.bg-primary:hover, a.bg-primary:hover, .bg-primary:hover {
+    background: #4338CA !important;
+    box-shadow: 0 6px 16px rgba(79, 70, 229, 0.25), inset 0 1px 0 rgba(255,255,255,0.1) !important;
+    transform: translateY(-1px);
+  }
+
+  /* Interactive elements */
+  button, .cursor-pointer, .list-item-hover {
+    transition: all 150ms ease;
+  }
+  button:hover:not(:disabled) {
+    transform: translateY(-1px);
+  }
+}
